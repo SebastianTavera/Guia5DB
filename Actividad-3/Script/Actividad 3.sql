@@ -1,7 +1,6 @@
 -- =============================================================================
 -- GUÍA 5: PRÁCTICA DE BASE DE DATOS
 -- ACTIVIDAD 3: FUNCIONES DEFINIDAS POR EL USUARIO (UDF)
--- Estudiante: Juan Manuel Gamez Nieto
 -- =============================================================================
 
 USE Guia_5;
@@ -11,7 +10,8 @@ USE Guia_5;
 -- -----------------------------------------------------------------------------
 DROP FUNCTION IF EXISTS fn_calcular_edad;
 
-DELIMITER / /
+DELIMITER /
+/
 
 CREATE FUNCTION fn_calcular_edad(p_fecha_nacimiento DATE)
 RETURNS INT
@@ -28,7 +28,9 @@ BEGIN
     SET v_edad = TIMESTAMPDIFF(YEAR, p_fecha_nacimiento, CURDATE());
     
     RETURN v_edad;
-END //
+END
+/
+/
 
 DELIMITER;
 
@@ -37,7 +39,8 @@ DELIMITER;
 -- -----------------------------------------------------------------------------
 DROP FUNCTION IF EXISTS fn_formatear_nombre_completo;
 
-DELIMITER / /
+DELIMITER /
+/
 
 CREATE FUNCTION fn_formatear_nombre_completo(
     p_primer_nombre VARCHAR(50),
@@ -61,7 +64,9 @@ BEGIN
     SET v_resultado = UPPER(CONCAT(v_apellidos, ', ', v_nombres));
     
     RETURN v_resultado;
-END //
+END
+/
+/
 
 DELIMITER;
 
