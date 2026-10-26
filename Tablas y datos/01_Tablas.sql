@@ -1,11 +1,14 @@
--- Compatible: MySQL 8.x y MariaDB 10.5+
--- utf8mb4 explicito: MariaDB antigua usa latin1 por defecto
+-- Crea la BD Guia_5 y sus tablas
+
+-- utf8mb4 explicito para MariaDB
 create database if not exists Guia_5
     character set utf8mb4
     collate utf8mb4_unicode_ci;
 
 USE Guia_5;
 
+-- borra en orden inverso por las FK
+drop table if exists AuditoriaMatricula;
 drop table if exists Matricula;
 drop table if exists Grupo;
 drop table if exists Materia;
@@ -54,6 +57,7 @@ CREATE TABLE Materia (
     FOREIGN KEY (IdPrograma) REFERENCES Programa(IdPrograma)
 );
 
+-- Grupo = el "curso" de la guia
 CREATE TABLE Grupo (
     IdGrupo INT PRIMARY KEY,
     IdMateria INT,
